@@ -1,0 +1,17 @@
+node_modules
+dist
+.output
+.vinxi
+*.log
+.DS_Store
+.env
+.env.local
+
+# AI
+/.scratch
+/.agents
+context.md
+spec.md
+
+# Resources
+/indonesian_parenting_resources/*
