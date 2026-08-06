@@ -3,18 +3,12 @@ services:
     image: pgvector/pgvector:pg17-trixie
     container_name: parenting_postgres
     environment:
-      POSTGRES_DB: parenting_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: securedb,
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d parenting_db"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
 volumes:
   pgdata:
