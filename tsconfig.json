@@ -17,7 +17,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "~/*": ["./app/*"]
-    }
+    },
+    "types": ["node"]
   },
-  "include": ["app", "tests"]
+  "include": ["app", "tests", "scripts", "drizzle.config.ts"]
 }
