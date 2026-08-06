@@ -1,3 +1,5 @@
+import { containsRedFlag, EMERGENCY_RESPONSE } from '../lib/safety'
+
 export interface Citation {
   documentTitle: string
   pageNumber?: number
@@ -25,6 +27,10 @@ export async function submitParentingQuery(
       answer:
         'Please enter a question regarding child health and growth development.',
     }
+  }
+
+  if (containsRedFlag(trimmed)) {
+    return { status: 'emergency', answer: EMERGENCY_RESPONSE }
   }
 
   return {
