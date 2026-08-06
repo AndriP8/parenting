@@ -14,6 +14,13 @@ export const documents = pgTable('documents', {
   title: text('title').notNull(),
   sourcePath: text('source_path').notNull().unique(),
   category: text('category'),
+  sourceVersion: text('source_version'),
+  contentHash: text('content_hash'),
+  ingestionStatus: text('ingestion_status').notNull().default('ready'),
+  chunkCount: integer('chunk_count').notNull().default(0),
+  embeddingModel: text('embedding_model')
+    .notNull()
+    .default('gemini-embedding-001'),
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
 })
 
@@ -26,8 +33,9 @@ export const documentChunks = pgTable(
     }),
     chunkIndex: integer('chunk_index').notNull(),
     content: text('content').notNull(),
+    contentHash: text('content_hash'),
     metadata: jsonb('metadata').default({}),
-    embedding: vector('embedding', { dimensions: 1536 }),
+    embedding: vector('embedding', { dimensions: 768 }),
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
   },
   (table) => [
