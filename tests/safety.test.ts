@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { submitParentingQuery } from '../app/api/query'
 import { containsRedFlag, EMERGENCY_RESPONSE } from '../app/lib/safety'
+import { handleParentingQuery } from '../app/utils/parenting.function'
 
 describe('deterministic red-flag safety gate', () => {
   it.each([
@@ -20,7 +20,7 @@ describe('deterministic red-flag safety gate', () => {
   })
 
   it('returns the fixed emergency response before normal processing', async () => {
-    const result = await submitParentingQuery({ question: 'Baby has cyanosis' })
+    const result = await handleParentingQuery({ question: 'Baby has cyanosis' })
     expect(result).toEqual({ status: 'emergency', answer: EMERGENCY_RESPONSE })
   })
 })
