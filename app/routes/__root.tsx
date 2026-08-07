@@ -30,6 +30,14 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: () => (
+    <RootDocument>
+      <div className="p-8 text-center mt-12">
+        <h1 className="text-4xl font-bold mb-4">404</h1>
+        <p className="text-lg">The page you are looking for does not exist.</p>
+      </div>
+    </RootDocument>
+  ),
 })
 
 function RootComponent() {
