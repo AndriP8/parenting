@@ -34,9 +34,9 @@
     "pg": "^8.22.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.3",
-    "vinxi": "^0.5.1"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.4",

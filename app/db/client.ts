@@ -1,5 +1,3 @@
-import 'dotenv/config'
-
 import { drizzle } from 'drizzle-orm/node-postgres'
 import { migrate as drizzleMigrate } from 'drizzle-orm/node-postgres/migrator'
 import pg from 'pg'
