@@ -1,0 +1,17 @@
+services:
+  parenting_qa_app:
+    image: ghcr.io/andripurnomo/parenting:latest
+    container_name: parenting_qa_app
+    restart: unless-stopped
+    env_file: .env
+    networks:
+      - web_network
+      - db_network
+
+networks:
+  web_network:
+    external: true
+    name: web_network
+  db_network:
+    external: true
+    name: db_network
