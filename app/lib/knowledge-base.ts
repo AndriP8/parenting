@@ -1,7 +1,7 @@
 import { desc, gt, sql } from 'drizzle-orm'
-import type { ChunkMetadata } from '../utils/parenting'
 import { db } from '../db/client'
 import { documentChunks } from '../db/schema'
+import type { ChunkMetadata } from '../utils/parenting'
 import type { Embedder } from './embedding'
 
 export interface ChunkResult {

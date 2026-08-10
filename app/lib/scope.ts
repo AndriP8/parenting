@@ -68,3 +68,15 @@ export const PLANNED_TOPICS = SCOPE_TOPICS.filter((t) => t.status === 'planned')
 
 export const OUT_OF_SCOPE_NOTE =
   'Di luar cakupan: dosis obat, diagnosis medis, perhitungan kalkulator pertumbuhan, dan konten berbayar/komersial.'
+
+const outOfScopePatterns = [
+  /hitung.*z[- ]?(score|skor)|z[- ]?(score|skor).*hitung/i,
+  /\bhitung.*\b(BB|TB)\/(U|TB)|(BB|TB)\/(U|TB).*\bhitung/i,
+  /dosis\s+obat|dosisnya\s+\d/i,
+  /\bantidepresan\b/i,
+]
+
+export function containsOutOfScope(question: string): boolean {
+  const normalized = question.normalize('NFKC').replace(/\s+/g, ' ').trim()
+  return outOfScopePatterns.some((pattern) => pattern.test(normalized))
+}

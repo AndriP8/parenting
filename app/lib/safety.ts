@@ -1,5 +1,9 @@
 const redFlagPatterns = [
-  /sesak\s+napas/i,
+  /sesak\s+napas|napas.*\bsesak\b/i,
+  /napas\s+cepat/i,
+  /dada\s+cekung/i,
+  /tarikan\s+dinding\s+dada/i,
+  /\bretraksi\b/i,
   /(?:difficulty|trouble|shortness\s+of)\s+breath(?:ing)?/i,
   /\bkejang\b/i,
   /\b(?:seizure|convulsion)s?\b/i,

@@ -2,6 +2,7 @@ import type { QueryResponse } from '../utils/parenting'
 import type { KnowledgeBase } from './knowledge-base'
 import type { LLMClient } from './llm-client'
 import { containsRedFlag, EMERGENCY_RESPONSE } from './safety'
+import { containsOutOfScope, OUT_OF_SCOPE_NOTE } from './scope'
 
 export interface Agent {
   handleQuery(question: string): Promise<QueryResponse>
@@ -77,6 +78,12 @@ export class SafeParentingAgent implements Agent {
     const trimmed = question ? question.trim() : ''
     if (containsRedFlag(trimmed)) {
       return { status: 'emergency', answer: EMERGENCY_RESPONSE }
+    }
+    if (containsOutOfScope(trimmed)) {
+      return {
+        status: 'fallback',
+        answer: `Maaf, pertanyaan Anda berada di luar cakupan topik yang dapat saya bantu.\n\n${OUT_OF_SCOPE_NOTE}\n\nSilakan lihat daftar topik yang tersedia, atau konsultasikan langsung dengan tenaga kesehatan.`,
+      }
     }
     return this.coreAgent.handleQuery(question)
   }
