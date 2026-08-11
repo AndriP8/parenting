@@ -2,6 +2,8 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 RUN corepack enable
 
+ENV PNPM_ONLY_BUILT_DEPENDENCIES="@google/genai,esbuild,protobufjs"
+
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
