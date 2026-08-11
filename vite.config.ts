@@ -4,6 +4,9 @@ import viteReact from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  preview: {
+    host: '0.0.0.0',
+  },
   plugins: [
     tailwindcss(),
     tanstackStart({
