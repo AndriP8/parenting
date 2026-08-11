@@ -1,6 +1,6 @@
 services:
   parenting_qa_app:
-    image: ghcr.io/andripurnomo/parenting:latest
+    image: ghcr.io/andrip8/parenting:latest
     container_name: parenting_qa_app
     restart: unless-stopped
     env_file: .env
