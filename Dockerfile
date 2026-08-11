@@ -15,9 +15,9 @@ WORKDIR /app
 RUN corepack enable
 
 COPY --from=builder /app/package.json /app/pnpm-lock.yaml ./
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.output ./.output
 
 EXPOSE 4173
-ENV __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=parenting.andripurnomo.com
-CMD ["pnpm", "start"]
+ENV NITRO_HOST=0.0.0.0
+ENV NITRO_PORT=4173
+CMD ["node", ".output/server/index.mjs"]
