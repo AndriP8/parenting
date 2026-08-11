@@ -38,6 +38,13 @@
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@google/genai",
+      "esbuild",
+      "protobufjs"
+    ]
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.5.4",
     "@types/node": "^22.10.7",
