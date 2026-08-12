@@ -42,14 +42,21 @@ describe('deterministic out-of-scope gate', () => {
   })
 
   it('does not flag in-scope questions', () => {
-    expect(containsOutOfScope('Kapan waktu yang tepat untuk mulai MPASI?')).toBe(false)
-    expect(containsOutOfScope('Bagaimana cara menstimulasi bayi 3 bulan?')).toBe(false)
-    expect(containsOutOfScope('Berapa kenaikan berat badan minimal untuk bayi?')).toBe(false)
+    expect(
+      containsOutOfScope('Kapan waktu yang tepat untuk mulai MPASI?'),
+    ).toBe(false)
+    expect(
+      containsOutOfScope('Bagaimana cara menstimulasi bayi 3 bulan?'),
+    ).toBe(false)
+    expect(
+      containsOutOfScope('Berapa kenaikan berat badan minimal untuk bayi?'),
+    ).toBe(false)
   })
 
   it('returns fallback for out-of-scope questions before LLM generation', async () => {
     const result = await handleParentingQuery({
-      question: 'Tolong hitungkan z-score BB/U anak saya, berat 6.5 kg umur 4 bulan',
+      question:
+        'Tolong hitungkan z-score BB/U anak saya, berat 6.5 kg umur 4 bulan',
     })
     expect(result.status).toBe('fallback')
     expect(result.answer).toContain('di luar cakupan')

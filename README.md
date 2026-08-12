@@ -13,7 +13,7 @@ AI Q&A web app for Indonesian parents grounded in official pediatric resources (
 
 - **Framework**: TanStack Start (React 19 + Nitro server)
 - **Database**: PostgreSQL + pgvector
-- **AI**: Gemini (`text-embedding-004`) via TanStack AI / Google GenAI SDK
+- **AI**: Gemini (`gemini-embedding-001`) via TanStack AI / Google GenAI SDK
 - **Styling**: Tailwind CSS v4
 - **ORM**: Drizzle
 - **Package manager**: pnpm
